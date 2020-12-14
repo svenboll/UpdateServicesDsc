@@ -657,11 +657,12 @@ if ($WsusConfiguration.OobeInitialized)
 }
 }
 
-if (-not (Test-TargetResource @PSBoundParameters))
-{
-    $errorMessage = $script:localizedData.TestFailedAfterSet
-    New-InvalidResultException -Message $errorMessage -ErrorRecord $_
-}
+# disabled by Sven Boll because Variable $_ is always empty in our environment
+# if (-not (Test-TargetResource @PSBoundParameters))
+# {
+#     $errorMessage = $script:localizedData.TestFailedAfterSet
+#     New-InvalidResultException -Message $errorMessage -ErrorRecord $_
+# }
 }
 
 <#
