@@ -502,9 +502,9 @@ function Set-TargetResource
         {
             Write-Verbose -Message $script:localizedData.RemovingDefaultInit
             # remove default products & classification
-            foreach ($Product in ($WsusServer.GetSubscription().GetUpdateCategories().Title))
+            foreach ($ProductID in ($WsusServer.GetSubscription().GetUpdateCategories().ID.Guid))
             {
-                Get-WsusProduct | Where-Object -FilterScript { $_.Product.Title -eq $Product } | `
+                Get-WsusProduct | Where-Object -FilterScript { $_.Product.ID.Guid -eq $ProductID } | `
                         Set-WsusProduct -Disable
         }
 
